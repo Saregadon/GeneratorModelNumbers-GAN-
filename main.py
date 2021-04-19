@@ -2,6 +2,7 @@
 #python3.7 -m pip install keras==2.1.5
 
 import numpy as np
+from np import expand_dims
 import keras
 import matplotlib
 import tensorflow as tf
