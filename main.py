@@ -7,9 +7,11 @@
 #python3.7 -m pip install keras==2.1.5
 # example of training a gan on mnist
 
+import os
 import matplotlib
 import numpy as np
 import sklearn
+import tensorflow as tf
 from numpy import expand_dims
 from numpy import zeros
 from numpy import ones
@@ -27,6 +29,9 @@ from keras.layers import Conv2DTranspose
 from keras.layers import LeakyReLU
 from keras.layers import Dropout
 from matplotlib import pyplot
+
+#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+#print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
 # define the standalone discriminator model
 def define_discriminator(in_shape=(28,28,1)):
@@ -97,7 +102,7 @@ def generate_real_samples(dataset, n_samples):
 	# generate 'real' class labels (1)
 	y = ones((n_samples, 1)) 
 	#change to .9
-	y = y * .9
+	y = y * .9 #Question 3 // DONE
 	return X, y
 
 # generate points in latent space as input for the generator
