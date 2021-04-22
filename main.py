@@ -5,7 +5,8 @@
 #converts from [0,255] to [0,1]
 #if need keras >= 2.2
 #python3.7 -m pip install keras==2.1.5
-# example of training a gan on mnist
+#example of training a gan on mnist
+#keras==2.1.5 tensorflow==1.13.1
 
 import os
 import matplotlib
@@ -63,7 +64,7 @@ def define_generator(latent_dim): #change from ReLu to TanH
 	# upsample to 28x28
 	model.add(Conv2DTranspose(128, (4,4), strides=(2,2), padding='same'))
 	model.add(LeakyReLU(alpha=0.2))
-	model.add(Conv2D(1, (7,7), activation='sigmoid', padding='same'))
+	model.add(Conv2D(1, (7,7), activation='tanh', padding='same')) #probably just the only change from sigmoid to tanh
 	return model
 
 # define the combined generator and discriminator model, for updating the generator
