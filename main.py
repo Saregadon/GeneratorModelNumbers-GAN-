@@ -45,7 +45,7 @@ def define_discriminator(in_shape=(28,28,1)):
 	return model
 
 # define the standalone generator model
-def define_generator(latent_dim):
+def define_generator(latent_dim): #change from ReLu to TanH
 	model = Sequential()
 	# foundation for 7x7 image
 	n_nodes = 128 * 7 * 7
@@ -178,7 +178,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 			summarize_performance(i, g_model, d_model, dataset, latent_dim)
 
 # size of the latent space
-latent_dim = 100
+latent_dim = 100 #1000 #10
 # create the discriminator
 d_model = define_discriminator()
 # create the generator
