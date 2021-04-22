@@ -95,7 +95,9 @@ def generate_real_samples(dataset, n_samples):
 	# retrieve selected images
 	X = dataset[ix]
 	# generate 'real' class labels (1)
-	y = ones((n_samples, 1)) #change to .9?
+	y = ones((n_samples, 1)) 
+	#change to .9
+	y = y * .9
 	return X, y
 
 # generate points in latent space as input for the generator
