@@ -44,7 +44,7 @@ def define_discriminator(in_shape=(28,28,1)):
 	model.add(LeakyReLU(alpha=0.2))
 	model.add(Dropout(0.4))
 	model.add(Flatten())
-	model.add(Dense(1, activation='sigmoid'))
+	model.add(Dense(1, activation='tanh')) #another tanh activation? //was sigmoid
 	# compile model
 	opt = Adam(lr=0.0002, beta_1=0.5)
 	model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
@@ -158,7 +158,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	g_model.save(filename)
 
 # train the generator and discriminator
-def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=256):
+def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=30, n_batch=256):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
 	half_batch = int(n_batch / 2)
 	# manually enumerate epochs
@@ -186,7 +186,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 			summarize_performance(i, g_model, d_model, dataset, latent_dim)
 
 # size of the latent space
-latent_dim = 100 #1000 #10
+latent_dim = 10 #100 #1000 #10
 # create the discriminator
 d_model = define_discriminator()
 # create the generator
