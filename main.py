@@ -158,7 +158,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	g_model.save(filename)
 
 # train the generator and discriminator
-def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=30, n_batch=256):
+def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=10, n_batch=256):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
 	half_batch = int(n_batch / 2)
 	# manually enumerate epochs
@@ -186,7 +186,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=30, n_batch
 			summarize_performance(i, g_model, d_model, dataset, latent_dim)
 
 # size of the latent space
-latent_dim = 10 #100 #1000 #10
+latent_dim = 100 #100 #1000 #10
 # create the discriminator
 d_model = define_discriminator()
 # create the generator
