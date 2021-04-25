@@ -29,6 +29,8 @@ from keras.layers import Conv2D
 from keras.layers import Conv2DTranspose
 from keras.layers import LeakyReLU
 from keras.layers import Dropout
+from keras.metrics import BinaryCrossentropy
+from keras.layers.normalization import BatchNormalization
 from matplotlib import pyplot
 
 #os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -47,6 +49,7 @@ def define_discriminator(in_shape=(28,28,1)):
 	model.add(Dense(1, activation='sigmoid')) # -- only change to tanh in generator
 	# compile model
 	opt = Adam(lr=0.0002, beta_1=0.5)
+	loss = BinaryCrossentropy(label_smoothing=.9)
 	model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 	return model
 
@@ -103,7 +106,7 @@ def generate_real_samples(dataset, n_samples):
 	# generate 'real' class labels (1)
 	y = ones((n_samples, 1)) 
 	#change to .9
-	y = y * .9 #Question 3 // DONE
+	#y = y * .9 #Question 3 // DONE
 	return X, y
 
 # generate points in latent space as input for the generator
@@ -158,7 +161,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	g_model.save(filename)
 
 # train the generator and discriminator
-def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=10, n_batch=256):
+def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=256):
 	bat_per_epo = int(dataset.shape[0] / n_batch)
 	half_batch = int(n_batch / 2)
 	# manually enumerate epochs
