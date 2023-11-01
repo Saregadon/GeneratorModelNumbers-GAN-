@@ -10,6 +10,17 @@ Import Statements:
 Various libraries and modules are imported, including TensorFlow, Keras, and other utilities.
 Discriminator Model (define_discriminator function):
 
+// REQUIRESMENTS FOR IMPLEMENTATION ----------------------------------------
+#Generative Adversarial Network
+#Generates plausible handwritten digits
+#Binary Classification problem
+#converts from [0,255] to [0,1]
+#if need keras >= 2.2
+#python3.7 -m pip install keras==2.1.5
+#example of training a gan on mnist
+#keras==2.1.5 tensorflow==1.13.1
+// REQUIRESMENTS FOR IMPLEMENTATION ----------------------------------------
+
 This function defines the discriminator, a model that distinguishes between real and fake handwritten digits.
 The model uses Convolutional layers, Dropout, Leaky ReLU activation functions, and outputs a single value using the sigmoid activation function.
 The Adam optimizer and binary cross-entropy loss are used to compile the discriminator.
