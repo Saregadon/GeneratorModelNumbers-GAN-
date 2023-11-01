@@ -1,4 +1,4 @@
-#Christian Schuering 1932884
+#Christian Schuering
 #Generative Adversarial Network
 #Generates plausible handwritten digits
 #Binary Classification problem
