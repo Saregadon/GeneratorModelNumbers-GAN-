@@ -1,1 +1,1 @@
-# ProblemSet5-GeneratorModelNumbers
+# GAN for Model numbers
