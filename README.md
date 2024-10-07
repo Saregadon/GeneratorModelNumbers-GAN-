@@ -1,7 +1,5 @@
 # GAN for Model numbers
 
-Header Information:
-
 There is a brief description stating that this GAN generates plausible handwritten digits.
 The problem is framed as a binary classification.
 There are some comments regarding package versions and installations.
